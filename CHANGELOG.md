@@ -2,6 +2,12 @@
 
 All notable changes to this package are documented here.
 
+## 1.0.1
+
+Removed `usableAsTool` from the trigger node. A trigger cannot be invoked as an
+AI tool, and the community node scanner rejects the property on trigger nodes.
+No functional change.
+
 ## 1.0.0
 
 First release.

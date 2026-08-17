@@ -37,6 +37,10 @@ function parseSignatureHeader(header: string): { timestamp: string; signature: s
 	return timestamp && signature ? { timestamp, signature } : null;
 }
 
+// The n8n lint rule wants usableAsTool on every node, while
+// @n8n/scan-community-package rejects it on triggers, since a trigger cannot be
+// invoked as an AI tool. The scanner is what verification runs, so it wins.
+// eslint-disable-next-line @n8n/community-nodes/node-usable-as-tool
 export class SonatoTrigger implements INodeType {
 	description: INodeTypeDescription = {
 		displayName: 'sona.to Trigger',
@@ -49,7 +53,6 @@ export class SonatoTrigger implements INodeType {
 		defaults: {
 			name: 'sona.to Trigger',
 		},
-		usableAsTool: true,
 		inputs: [],
 		outputs: [NodeConnectionTypes.Main],
 		credentials: [
