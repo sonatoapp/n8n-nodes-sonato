@@ -22,6 +22,9 @@ export const postCreateDescription: INodeProperties[] = [
 			send: {
 				type: 'body',
 				property: 'accounts',
+				// The picker yields an array, but an AI agent filling this field
+				// supplies a string, and the API requires an array either way.
+				value: '={{ Array.isArray($value) ? $value : String($value).split(",").map((id) => id.trim()).filter((id) => id) }}',
 			},
 		},
 	},

@@ -57,6 +57,24 @@ Publishing a workflow registers a webhook on your sona.to account. Unpublishing 
 
 Each delivery is signed by sona.to, and the trigger checks that signature before starting the workflow. A request with a missing, malformed, stale or incorrect signature is rejected.
 
+## Using this node with an AI agent
+
+The sona.to node can be attached to an AI Agent node as a tool. Two settings matter, and n8n leaves both to you.
+
+**Let the agent fill the fields it needs.** Click the sparkle button next to each parameter the agent should control, for example Caption on Create a post. Parameters without it keep whatever value you set by hand, which is useful for anything you do not want the agent to change.
+
+**Give the tool a description the model can act on.** By default n8n derives one from the resource and operation, which reads like "Create a post in sona.to". That is enough for the agent to find the tool but not to use it well. Set Tool Description to Set Manually and write something specific.
+
+For Create a post:
+
+```
+Create a social media post on the user's connected sona.to channels. Call the
+channels tool first to get real channel IDs, since the accounts field will not
+accept an invented one.
+```
+
+An agent creating posts needs a channels tool attached as well, otherwise it has no way to learn the IDs. Attach a second sona.to tool with resource Channel and operation Get Many.
+
 ## Credentials
 
 Authentication uses an API token.

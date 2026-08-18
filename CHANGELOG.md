@@ -2,6 +2,14 @@
 
 All notable changes to this package are documented here.
 
+## 1.0.2
+
+The channels field on Create a post now accepts a single ID or a comma separated
+list as well as an array, so an AI agent filling that field no longer fails on
+the array type.
+
+Added a README section on using the node with an AI agent.
+
 ## 1.0.1
 
 Removed `usableAsTool` from the trigger node. A trigger cannot be invoked as an
